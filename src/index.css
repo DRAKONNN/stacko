@@ -79,9 +79,10 @@
   /*
   * Games elements
   */
-  .row {
+  .container {
     margin-top: 5vh;
   }
+  
   .col-lg-6 {
     margin-top: 5vh;
     
