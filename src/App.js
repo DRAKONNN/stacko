@@ -9,20 +9,20 @@ function App() {
   return (
     <div>
        
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">STACK'O</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
+  <nav className="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+    <div className="container-fluid">
+      <a className="navbar-brand" href="#">STACK'O</a>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Link</a>
+      <div className="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link disabled" href="#">Link</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Filters</a>
-            <ul class="dropdown-menu checkbox-menu allow-focus">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Filters</a>
+            <ul className="dropdown-menu checkbox-menu allow-focus">
               <li >
                 <label>
                   <input type="checkbox" value="quick" id="checkboxQuick" checked /> Quick
@@ -53,16 +53,16 @@ function App() {
   
   <header>
     
-    <div class="overlay"></div>
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <div className="overlay"></div>
+    <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
       <source src="media/CardOverlay.mov" type="video/mp4" />
     </video>
   
-    <div class="container h-100">
-      <div class="d-flex h-100 text-center align-items-center">
-        <div class="w-100 text-white">
-          <h1 class="display-3">Welcome to Stack'o</h1>
-          <p class="lead mb-0">Using HTML5 Video and Bootstrap</p>
+    <div className="container h-100">
+      <div className="d-flex h-100 text-center align-items-center">
+        <div className="w-100 text-white">
+          <h1 className="display-3">Welcome to Stack'o</h1>
+          <p className="lead mb-0">Using HTML5 Video and Bootstrap</p>
         </div>
       </div>
     </div>
@@ -70,68 +70,68 @@ function App() {
 
 
   <div id="root"></div>
-  <div class="container">
-    <div class="row row-cols-1 gy-5">
-      <div class="col-lg-6 quick party frenetic">
-        <div class="bg-primary me-md-3 pt-3 px-3 pt-md-3 px-md-5 text-center text-white overflow-hidden">
-          <h5 class="text-start"><span class="badge bg-light text-dark"><i class="fas fa-users" aria-hidden="true"></i> 4-8</span></h5>
-          <h5 class="text-start"><span class="badge rounded-pill bg-light text-dark"><i class="fas fa-clock" aria-hidden="true"></i> 5-15 min</span></h5>
-          <div class="my-3 py-3">
-            <h2 class="display-5">President</h2>
-            <h3 class="display-6">(Asshole, Capitalism or Scum)</h3>
-            <p class="lead">Race to get rid of all of the cards in their hands in order to become "president"</p>
-            <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#presidentOffCanvas">
+  <div className="container">
+    <div className="row row-cols-1 gy-5">
+      <div className="col-lg-6 quick party frenetic">
+        <div className="bg-primary me-md-3 pt-3 px-3 pt-md-3 px-md-5 text-center text-white overflow-hidden">
+          <h5 className="text-start"><span className="badge bg-light text-dark"><i className="fas fa-users" aria-hidden="true"></i> 4-8</span></h5>
+          <h5 className="text-start"><span className="badge rounded-pill bg-light text-dark"><i className="fas fa-clock" aria-hidden="true"></i> 5-15 min</span></h5>
+          <div className="my-3 py-3">
+            <h2 className="display-5">President</h2>
+            <h3 className="display-6">(Asshole, Capitalism or Scum)</h3>
+            <p className="lead">Race to get rid of all of the cards in their hands in order to become "president"</p>
+            <button className="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#presidentOffCanvas">
               Read rules!
             </button>
           </div>
-          <div class="bg-light shadow-sm mx-auto card-block"><img class="card-img-bottom" src="images/President.png" alt="Card image" />
+          <div className="bg-light shadow-sm mx-auto card-block"><img className="card-img-bottom" src="images/President.png" alt="Card image" />
           </div>
         </div>
       </div>
-      <div class="col-lg-6 quick strategy">
-        <div class="bg-danger me-md-3 pt-3 px-3 pt-md-3 px-md-5 text-center text-white overflow-hidden">
-          <h5 class="text-start"><span class="badge bg-warning"><i class="fas fa-users" aria-hidden="true"></i> 2-6</span></h5>
-          <h5 class="text-start"><span class="badge rounded-pill bg-warning"><i class="fas fa-clock" aria-hidden="true"></i> 5-15 min</span></h5>
-          <div class="my-3 p-3">
-            <h2 class="display-5">Durak</h2>
-            <h3 class="display-6">("Fool", Kur or Russian War)</h3>
-            <p class="lead">Attack your opponents and defend yourself from others so as not to become the "fool"</p>
-            <button class="btn btn-warning text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#durakOffCanvas">
+      <div className="col-lg-6 quick strategy">
+        <div className="bg-danger me-md-3 pt-3 px-3 pt-md-3 px-md-5 text-center text-white overflow-hidden">
+          <h5 className="text-start"><span className="badge bg-warning"><i className="fas fa-users" aria-hidden="true"></i> 2-6</span></h5>
+          <h5 className="text-start"><span className="badge rounded-pill bg-warning"><i className="fas fa-clock" aria-hidden="true"></i> 5-15 min</span></h5>
+          <div className="my-3 p-3">
+            <h2 className="display-5">Durak</h2>
+            <h3 className="display-6">("Fool", Kur or Russian War)</h3>
+            <p className="lead">Attack your opponents and defend yourself from others so as not to become the "fool"</p>
+            <button className="btn btn-warning text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#durakOffCanvas">
               Read rules!
             </button>
           </div>
-          <div class="bg-warning shadow-sm mx-auto card-block"><img class="card-img-bottom" src="images/Durak.png" alt="Card image" /></div>
+          <div className="bg-warning shadow-sm mx-auto card-block"><img className="card-img-bottom" src="images/Durak.png" alt="Card image" /></div>
         </div>
       </div>
     
-      <div class="col-lg-6">
-        <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-          <div class="my-3 p-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
+      <div className="col-lg-6">
+        <div className="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div className="my-3 p-3">
+            <h2 className="display-5">Another headline</h2>
+            <p className="lead">And an even wittier subheading.</p>
           </div>
-          <div class="bg-dark shadow-sm mx-auto card-block"></div>
+          <div className="bg-dark shadow-sm mx-auto card-block"></div>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-          <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
+      <div className="col-lg-6">
+        <div className="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+          <div className="my-3 py-3">
+            <h2 className="display-5">Another headline</h2>
+            <p className="lead">And an even wittier subheading.</p>
           </div>
-          <div class="bg-light shadow-sm mx-auto card-block"></div>
+          <div className="bg-light shadow-sm mx-auto card-block"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="offcanvas offcanvas-start text-bg-dark" id="presidentOffCanvas">
-    <div class="offcanvas-header">
-      <h1 class="offcanvas-title">Rules</h1>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  <div className="offcanvas offcanvas-start text-bg-dark" id="presidentOffCanvas">
+    <div className="offcanvas-header">
+      <h1 className="offcanvas-title">Rules</h1>
+      <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div class="offcanvas-body">
+    <div className="offcanvas-body">
       <h2>Deal</h2>
       <p>Starting to the dealers left, deal one card at a time until all cards (52) have been dealt.</p>
       <p>After cards are dealt, the scum must hand over the two best cards in their hand to the president, and the president passes back any two cards they do not want. 
@@ -148,12 +148,12 @@ function App() {
       <p>The first player who is out of cards is awarded the highest social rank: president; second player: vice-president; penultimate: vice-scum; last player: scum</p>
       </div>
   </div>
-  <div class="offcanvas offcanvas-start text-bg-dark" id="durakOffCanvas">
-    <div class="offcanvas-header">
-      <h1 class="offcanvas-title">Rules</h1>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  <div className="offcanvas offcanvas-start text-bg-dark" id="durakOffCanvas">
+    <div className="offcanvas-header">
+      <h1 className="offcanvas-title">Rules</h1>
+      <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div class="offcanvas-body">
+    <div className="offcanvas-body">
       <h2>Deal</h2>
       <p>Starting to the dealers left, each player is dealt six cards.</p>
       <p>Pick one card from the stock, turn and place face up on the table. 
@@ -178,48 +178,48 @@ function App() {
     </div>
   </div>
 
-  <footer class="container py-5">
-    <div class="row">
-      <div class="col-12 col-md">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-        <small class="d-block mb-3 text-muted">&copy; 2023–2023</small>
+  <footer className="container py-5">
+    <div className="row">
+      <div className="col-12 col-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+        <small className="d-block mb-3 text-muted">&copy; 2023–2023</small>
       </div>
-      <div class="col-6 col-md">
+      <div className="col-6 col-md">
         <h5>Features</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="#">Cool stuff</a></li>
-          <li><a class="link-secondary" href="#">Random feature</a></li>
-          <li><a class="link-secondary" href="#">Team feature</a></li>
-          <li><a class="link-secondary" href="#">Stuff for developers</a></li>
-          <li><a class="link-secondary" href="#">Another one</a></li>
-          <li><a class="link-secondary" href="#">Last time</a></li>
+        <ul className="list-unstyled text-small">
+          <li><a className="link-secondary" href="#">Cool stuff</a></li>
+          <li><a className="link-secondary" href="#">Random feature</a></li>
+          <li><a className="link-secondary" href="#">Team feature</a></li>
+          <li><a className="link-secondary" href="#">Stuff for developers</a></li>
+          <li><a className="link-secondary" href="#">Another one</a></li>
+          <li><a className="link-secondary" href="#">Last time</a></li>
         </ul>
       </div>
-      <div class="col-6 col-md">
+      <div className="col-6 col-md">
         <h5>Resources</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="#">Resource name</a></li>
-          <li><a class="link-secondary" href="#">Resource</a></li>
-          <li><a class="link-secondary" href="#">Another resource</a></li>
-          <li><a class="link-secondary" href="#">Final resource</a></li>
+        <ul className="list-unstyled text-small">
+          <li><a className="link-secondary" href="#">Resource name</a></li>
+          <li><a className="link-secondary" href="#">Resource</a></li>
+          <li><a className="link-secondary" href="#">Another resource</a></li>
+          <li><a className="link-secondary" href="#">Final resource</a></li>
         </ul>
       </div>
-      <div class="col-6 col-md">
+      <div className="col-6 col-md">
         <h5>Resources</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="#">Business</a></li>
-          <li><a class="link-secondary" href="#">Education</a></li>
-          <li><a class="link-secondary" href="#">Government</a></li>
-          <li><a class="link-secondary" href="#">Gaming</a></li>
+        <ul className="list-unstyled text-small">
+          <li><a className="link-secondary" href="#">Business</a></li>
+          <li><a className="link-secondary" href="#">Education</a></li>
+          <li><a className="link-secondary" href="#">Government</a></li>
+          <li><a className="link-secondary" href="#">Gaming</a></li>
         </ul>
       </div>
-      <div class="col-6 col-md">
+      <div className="col-6 col-md">
         <h5>About</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="#">Team</a></li>
-          <li><a class="link-secondary" href="#">Locations</a></li>
-          <li><a class="link-secondary" href="#">Privacy</a></li>
-          <li><a class="link-secondary" href="#">Terms</a></li>
+        <ul className="list-unstyled text-small">
+          <li><a className="link-secondary" href="#">Team</a></li>
+          <li><a className="link-secondary" href="#">Locations</a></li>
+          <li><a className="link-secondary" href="#">Privacy</a></li>
+          <li><a className="link-secondary" href="#">Terms</a></li>
         </ul>
       </div>
     </div>
