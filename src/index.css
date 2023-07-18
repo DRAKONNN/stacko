@@ -34,7 +34,9 @@
   }
 
   
-
+  /*
+  * Header
+  */
   header {
     position: relative;
     background-color: black;
@@ -72,6 +74,28 @@
     background-color: black;
     opacity: 0.5;
     z-index: 1;
+  }
+
+  @media (max-width: 1126px) {
+    header {
+      position: relative;
+      background-color: black;
+      height: 25vh !important;
+      min-height: 15%;
+      width: auto;
+      overflow: hidden;
+    }
+  
+    header video {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      z-index: 0;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+    }
   }
 
   /*

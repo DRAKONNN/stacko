@@ -52,24 +52,21 @@ function App() {
 
   
   <header>
-    
-    <div className="overlay"></div>
+    {/* <div className="overlay"></div> */} 
     <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
       <source src="media/CardOverlay.mov" type="video/mp4" />
     </video>
   
-    <div className="container h-100">
-      <div className="d-flex h-100 text-center align-items-center">
+    <div className="container h-100 text-center align-items-center align-middle justify-content-center">
+      <div className="d-flex h-100 text-center align-items-center align-middle justify-content-center">
         <div className="w-100 text-white">
           <h1 className="display-3">Welcome to Stack'o</h1>
-          <p className="lead mb-0">Using HTML5 Video and Bootstrap</p>
+          <p className="lead mb-0">A library of different card games</p>
         </div>
       </div>
     </div>
   </header>
 
-
-  <div id="root"></div>
   <div className="container">
     <div className="row row-cols-1 gy-5">
       <div className="col-lg-6 quick party frenetic">
