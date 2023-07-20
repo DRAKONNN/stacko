@@ -3,12 +3,12 @@ import './App.css';
 
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
+import games from './datagames';
 //import { Button } from 'react-bootstrap';
 
 function App() {
   return (
-    <div>
-       
+  <div>  
   <nav className="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
     <div className="container-fluid">
       <a className="navbar-brand" href="#">STACK'O</a>
@@ -69,6 +69,29 @@ function App() {
 
   <div className="container">
     <div className="row row-cols-1 gy-5">
+
+      {games.map(game => {
+        return (
+          <div key={game.id} className="col-lg-6 quick party frenetic">
+          <div className={game.classAttBackground}>
+            <h5 className="text-start"><span className={game.classAttPlayers}><i className="fas fa-users" aria-hidden="true"></i> {game.minPlayers}-{game.maxPlayers}</span></h5>
+            <h5 className="text-start"><span className={game.classAttTime}><i className="fas fa-clock" aria-hidden="true"></i> {game.minTime}-{game.maxTime} min</span></h5>
+            <div className="my-3 py-3">
+              <h2 className="display-5">{game.name}</h2>
+              <h3 className="display-6">{game.surname}</h3>
+              <p className="lead">{game.description}</p>
+              <button className={game.classAttButton} type="button" data-bs-toggle="offcanvas" data-bs-target="#presidentOffCanvas">
+                Read rules!
+              </button>
+            </div>
+            <div className={game.classAttImage}><img className="card-img-bottom" src={game.imageUrl} alt={game.name} />
+            </div>
+          </div>
+        </div>
+        )
+      })}
+
+      {/*
       <div className="col-lg-6 quick party frenetic">
         <div className="bg-primary me-md-3 pt-3 px-3 pt-md-3 px-md-5 text-center text-white overflow-hidden">
           <h5 className="text-start"><span className="badge bg-light text-dark"><i className="fas fa-users" aria-hidden="true"></i> 4-8</span></h5>
@@ -85,6 +108,7 @@ function App() {
           </div>
         </div>
       </div>
+
       <div className="col-lg-6 quick strategy">
         <div className="bg-danger me-md-3 pt-3 px-3 pt-md-3 px-md-5 text-center text-white overflow-hidden">
           <h5 className="text-start"><span className="badge bg-warning"><i className="fas fa-users" aria-hidden="true"></i> 2-6</span></h5>
@@ -100,9 +124,10 @@ function App() {
           <div className="bg-warning shadow-sm mx-auto card-block"><img className="card-img-bottom" src="images/Durak.png" alt="Card image" /></div>
         </div>
       </div>
+      */} 
     
       <div className="col-lg-6">
-        <div className="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div className="me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
           <div className="my-3 p-3">
             <h2 className="display-5">Another headline</h2>
             <p className="lead">And an even wittier subheading.</p>
@@ -221,7 +246,7 @@ function App() {
       </div>
     </div>
   </footer>
-    </div>
+  </div>
   );
 }
 
