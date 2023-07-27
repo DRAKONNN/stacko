@@ -1,5 +1,5 @@
 export default [{
-  id: 0, 
+  id: 'president01', 
   name: 'President',
   surname: 'Asshole, Capitalism or Scum',
   description: 'Race to get rid of all of the cards in their hands in order to become "president"',
@@ -14,7 +14,7 @@ export default [{
   classAttButton: 'btn btn-light',
   classAttImage: 'bg-light shadow-sm mx-auto card-block',
 }, {
-  id: 1, 
+  id: 'durak02', 
   name: 'Durak',
   surname: '"Fool", Kur or Russian War',
   description: 'Attack your opponents and defend yourself from others so as not to become the "fool"',

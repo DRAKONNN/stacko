@@ -4,6 +4,7 @@ import './App.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import games from './datagames';
+import rules from './datarules';
 //import { Button } from 'react-bootstrap';
 
 function App() {
@@ -80,7 +81,7 @@ function App() {
               <h2 className="display-5">{game.name}</h2>
               <h3 className="display-6">{game.surname}</h3>
               <p className="lead">{game.description}</p>
-              <button className={game.classAttButton} type="button" data-bs-toggle="offcanvas" data-bs-target="#presidentOffCanvas">
+              <button className={game.classAttButton} type="button" data-bs-toggle="offcanvas" data-bs-target={`#${game.id}`}>
                 Read rules!
               </button>
             </div>
@@ -148,7 +149,27 @@ function App() {
     </div>
   </div>
 
-  <div className="offcanvas offcanvas-start text-bg-dark" id="presidentOffCanvas">
+  {rules.map(rule => {
+        return (
+          <div className="offcanvas offcanvas-start text-bg-dark" id={rule.id}>
+            <div className="offcanvas-header">
+              <h1 className="offcanvas-title">Rules</h1>
+              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div className="offcanvas-body">
+              <h2>Deal</h2>
+              <p>{rule.deal}</p>
+              <h2>Game round</h2>
+              <p>{rule.gameRound}</p>
+              <h2>Endgame</h2>
+              <p>{rule.endgame}</p>
+              </div>
+          </div>
+        )
+      })}
+
+  {/*
+  <div className="offcanvas offcanvas-start text-bg-dark" id="president01">
     <div className="offcanvas-header">
       <h1 className="offcanvas-title">Rules</h1>
       <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
@@ -189,7 +210,7 @@ function App() {
         A trump card can only be beaten by playing a higher trump.</p>
       <p>The attacker and the rest of the players can continue the attack by playing another card, 
         which is of the same rank as some card already played during the current bout – either an attack card or a card played by the defender.</p>
-        <p>The total number of cards played by the attackers during a bout must never exceed six or the number of cards in the defender's hand.</p>
+      <p>The total number of cards played by the attackers during a bout must never exceed six or the number of cards in the defender's hand.</p>
       <p>If defender has beaten off all cards, the attackers have to click "Beaten".</p>
       <p>If defender can't beat off some card, he have to click "Take".</p>
       <p>When an attack is beaten off, the defender becomes the new attacker for the next assault/round which attacks next player, the new defender. 
@@ -199,6 +220,7 @@ function App() {
       <p>When the stock has run out (including the trump card face up), the last player left holding cards is the loser.</p>
     </div>
   </div>
+  */} 
 
   <footer className="container py-5">
     <div className="row">
