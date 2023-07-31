@@ -158,11 +158,11 @@ function App() {
             </div>
             <div className="offcanvas-body">
               <h2>Deal</h2>
-              <p>{rule.deal}</p>
+              <p dangerouslySetInnerHTML={{ __html: rule.deal }} />
               <h2>Game round</h2>
-              <p>{rule.gameRound}</p>
+              <p dangerouslySetInnerHTML={{ __html: rule.gameRound }} />
               <h2>Endgame</h2>
-              <p>{rule.endgame}</p>
+              <p dangerouslySetInnerHTML={{ __html: rule.endgame }} />
               </div>
           </div>
         )
