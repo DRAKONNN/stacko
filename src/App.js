@@ -5,9 +5,39 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import games from './datagames';
 import rules from './datarules';
+import React, { useState } from "react";
 //import { Button } from 'react-bootstrap';
 
 function App() {
+
+  const [checkboxValues, setCheckboxValues] = useState({
+    checkboxQuick: true,
+    checkboxParty: true,
+    checkboxFrenetic: true,
+    checkboxStrategy: true,
+  });
+
+  const handleCheckboxChange = (event) => {
+    const { name, value, checked } = event.target;
+  
+    // Actualizar el estado del checkbox según el checkbox pulsado
+    setCheckboxValues((prevState) => ({ ...prevState, [name]: checked }));
+  
+    // Realizar acciones adicionales según el value del checkbox pulsado
+    checkAllCheckboxes();
+  };
+
+  const checkAllCheckboxes = () => {
+    for (const checkbox in checkboxValues) {
+      if (checkboxValues.hasOwnProperty(checkbox)) {
+        console.log(
+          `Checkbox "${checkbox}" tiene valor ${checkboxValues[checkbox]}`
+        );
+        // Otras acciones aquí...
+      }
+    }
+  };
+
   return (
   <div>  
   <nav className="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
@@ -26,22 +56,22 @@ function App() {
             <ul className="dropdown-menu checkbox-menu allow-focus">
               <li >
                 <label>
-                  <input type="checkbox" value="quick" id="checkboxQuick" checked /> Quick
+                  <input type="checkbox" name="checkboxQuick" value="quick" checked={checkboxValues.checkboxQuick} onChange={handleCheckboxChange} /> Quick
                 </label>
               </li>
               <li >
                 <label>
-                  <input type="checkbox" value="party" id="checkboxParty" checked /> Party
+                  <input type="checkbox" name="checkboxParty" value="party" checked={checkboxValues.checkboxParty} onChange={handleCheckboxChange} /> Party
                 </label>
               </li>
               <li >
                 <label>
-                  <input type="checkbox" value="frenetic" id="checkboxFrenetic" checked /> Frenetic
+                  <input type="checkbox" name="checkboxFrenetic" value="frenetic" checked={checkboxValues.checkboxFrenetic} onChange={handleCheckboxChange} /> Frenetic
                 </label>
               </li>
               <li >
                 <label>
-                  <input type="checkbox" value="strategy" id="checkboxStrategy" checked /> Strategy
+                  <input type="checkbox" name="checkboxStrategy" value="strategy" checked={checkboxValues.checkboxStrategy} onChange={handleCheckboxChange} /> Strategy
                 </label>
               </li>
             </ul>
@@ -50,8 +80,7 @@ function App() {
       </div>
     </div>
   </nav>
-
-  
+    
   <header>
     {/* <div className="overlay"></div> */} 
     <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
