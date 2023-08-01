@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import games from './datagames';
 import rules from './datarules';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import { Button } from 'react-bootstrap';
 
 function App() {
@@ -17,6 +17,13 @@ function App() {
     checkboxStrategy: true,
   });
 
+  const [gamesAux, setGamesAux] = useState([]);
+
+  useEffect(() => {
+    // Al cargar el componente, guardamos los datos en el estado "productos"
+    setGamesAux(games);
+  }, []);
+
   const handleCheckboxChange = (event) => {
     const { name, value, checked } = event.target;
   
@@ -24,7 +31,6 @@ function App() {
     setCheckboxValues((prevState) => ({ ...prevState, [name]: checked }));
   
     // Realizar acciones adicionales según el value del checkbox pulsado
-    checkAllCheckboxes();
   };
 
   const checkAllCheckboxes = () => {
@@ -33,7 +39,7 @@ function App() {
         console.log(
           `Checkbox "${checkbox}" tiene valor ${checkboxValues[checkbox]}`
         );
-        // Otras acciones aquí...
+        //Bucle for
       }
     }
   };
@@ -77,6 +83,7 @@ function App() {
             </ul>
           </li>
         </ul>
+        <button class="btn btn-primary" type="button" onClick={checkAllCheckboxes}>Search</button>
       </div>
     </div>
   </nav>
