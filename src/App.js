@@ -5,44 +5,102 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import games from './datagames';
 import rules from './datarules';
-import React, { useState, useEffect } from "react";
+import React, {useCallback, useState, useEffect } from "react";
 //import { Button } from 'react-bootstrap';
+
+const CATEGORIES = [
+  "Quick", 
+  "Party", 
+  "Frenetic", 
+  "Strategy",
+]
+
+const GAMES = games;
+
+function GameFilters(props) {
+  const { 
+    categories,
+    onFilterChange,
+  } = props
+  
+  return (
+      <ul className="dropdown-menu checkbox-menu allow-focus">
+        {categories.map(category => (
+          <li key={category}>
+            <label>
+              <input onChange={onFilterChange} type="checkbox" value={category} /> {category}
+            </label>
+          </li>
+        ))}
+      </ul>
+  )
+}
+
+function Game(props) {
+  const { game } = props
+  
+  return (
+    <div key={game.id} className="col-lg-6 quick party frenetic">
+    <div className={game.classAttBackground}>
+      <h5 className="text-start"><span className={game.classAttPlayers}><i className="fas fa-users" aria-hidden="true"></i> {game.minPlayers}-{game.maxPlayers}</span></h5>
+      <h5 className="text-start"><span className={game.classAttTime}><i className="fas fa-clock" aria-hidden="true"></i> {game.minTime}-{game.maxTime} min</span></h5>
+      <div className="my-3 py-3">
+        <h2 className="display-5">{game.name}</h2>
+        <h3 className="display-6">{game.surname}</h3>
+        <p className="lead">{game.description}</p>
+        <button className={game.classAttButton} type="button" data-bs-toggle="offcanvas" data-bs-target={`#${game.id}`}>
+          Read rules!
+        </button>
+      </div>
+      <div className={game.classAttImage}><img className="card-img-bottom" src={game.imageUrl} alt={game.name} />
+      </div>
+    </div>
+  </div>
+  )
+}
+
+function GamesList(props) {
+  const { games } = props
+  
+  return (
+    <>
+      {games.map(game => (
+        <Game game={game} />
+      ))}
+    </>
+  )
+}
 
 function App() {
 
-  const [checkboxValues, setCheckboxValues] = useState({
-    checkboxQuick: true,
-    checkboxParty: true,
-    checkboxFrenetic: true,
-    checkboxStrategy: true,
-  });
-
-  const [gamesAux, setGamesAux] = useState([]);
-
-  useEffect(() => {
-    // Al cargar el componente, guardamos los datos en el estado "productos"
-    setGamesAux(games);
-  }, []);
-
-  const handleCheckboxChange = (event) => {
-    const { name, value, checked } = event.target;
+  const [state, setState] = useState({
+    games: GAMES,
+    filters: new Set(),
+  })
   
-    // Actualizar el estado del checkbox según el checkbox pulsado
-    setCheckboxValues((prevState) => ({ ...prevState, [name]: checked }));
-  
-    // Realizar acciones adicionales según el value del checkbox pulsado
-  };
-
-  const checkAllCheckboxes = () => {
-    for (const checkbox in checkboxValues) {
-      if (checkboxValues.hasOwnProperty(checkbox)) {
-        console.log(
-          `Checkbox "${checkbox}" tiene valor ${checkboxValues[checkbox]}`
-        );
-        //Bucle for
+  const handleFilterChange = useCallback(event => {
+    setState(previousState => {
+      let filters = new Set(previousState.filters)
+      let games = GAMES
+      
+      if (event.target.checked) {
+        filters.add(event.target.value)
+      } else {
+        filters.delete(event.target.value)
       }
-    }
-  };
+      
+      if (filters.size) {
+        games = games.filter(game => {
+          return filters.has(game.category)
+        })
+      }
+      
+      return {
+        filters,
+        games,
+      }
+    })
+  }, [setState])
 
   return (
   <div>  
@@ -59,31 +117,10 @@ function App() {
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Filters</a>
-            <ul className="dropdown-menu checkbox-menu allow-focus">
-              <li >
-                <label>
-                  <input type="checkbox" name="checkboxQuick" value="quick" checked={checkboxValues.checkboxQuick} onChange={handleCheckboxChange} /> Quick
-                </label>
-              </li>
-              <li >
-                <label>
-                  <input type="checkbox" name="checkboxParty" value="party" checked={checkboxValues.checkboxParty} onChange={handleCheckboxChange} /> Party
-                </label>
-              </li>
-              <li >
-                <label>
-                  <input type="checkbox" name="checkboxFrenetic" value="frenetic" checked={checkboxValues.checkboxFrenetic} onChange={handleCheckboxChange} /> Frenetic
-                </label>
-              </li>
-              <li >
-                <label>
-                  <input type="checkbox" name="checkboxStrategy" value="strategy" checked={checkboxValues.checkboxStrategy} onChange={handleCheckboxChange} /> Strategy
-                </label>
-              </li>
-            </ul>
+            <GameFilters categories={CATEGORIES} onFilterChange={handleFilterChange} />
           </li>
         </ul>
-        <button class="btn btn-primary" type="button" onClick={checkAllCheckboxes}>Search</button>
+        <button class="btn btn-primary" type="button">Search</button>
       </div>
     </div>
   </nav>
@@ -106,27 +143,7 @@ function App() {
 
   <div className="container">
     <div className="row row-cols-1 gy-5">
-
-      {games.map(game => {
-        return (
-          <div key={game.id} className="col-lg-6 quick party frenetic">
-          <div className={game.classAttBackground}>
-            <h5 className="text-start"><span className={game.classAttPlayers}><i className="fas fa-users" aria-hidden="true"></i> {game.minPlayers}-{game.maxPlayers}</span></h5>
-            <h5 className="text-start"><span className={game.classAttTime}><i className="fas fa-clock" aria-hidden="true"></i> {game.minTime}-{game.maxTime} min</span></h5>
-            <div className="my-3 py-3">
-              <h2 className="display-5">{game.name}</h2>
-              <h3 className="display-6">{game.surname}</h3>
-              <p className="lead">{game.description}</p>
-              <button className={game.classAttButton} type="button" data-bs-toggle="offcanvas" data-bs-target={`#${game.id}`}>
-                Read rules!
-              </button>
-            </div>
-            <div className={game.classAttImage}><img className="card-img-bottom" src={game.imageUrl} alt={game.name} />
-            </div>
-          </div>
-        </div>
-        )
-      })}
+      <GamesList games={state.games} />
 
       {/*
       <div className="col-lg-6 quick party frenetic">
@@ -185,6 +202,7 @@ function App() {
     </div>
   </div>
 
+  {/* Creating offcanvas for the rules and set with dangerouslySetInnerHTML to avoid <br> issues*/} 
   {rules.map(rule => {
         return (
           <div className="offcanvas offcanvas-start text-bg-dark" id={rule.id}>
