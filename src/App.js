@@ -9,7 +9,7 @@ import React, {useCallback, useState, useEffect } from "react";
 //import { Button } from 'react-bootstrap';
 
 const CATEGORIES = [
-  "Quick", 
+  "Calm", 
   "Party", 
   "Frenetic", 
   "Strategy",
@@ -77,8 +77,10 @@ function App() {
     games: GAMES,
     filters: new Set(),
   })
+
+  const [numberPlayers, setNumberPlayers] = useState(5);
   
-  const handleFilterChange = useCallback(event => {
+  const handleFilterChange = useCallback((event, players) => {
     setState(previousState => {
       let filters = new Set(previousState.filters)
       let games = GAMES
@@ -91,7 +93,14 @@ function App() {
       
       if (filters.size) {
         games = games.filter(game => {
-          return filters.has(game.category)
+          const categoryMatch = filters.has(game.category);
+          const playersMatch = game.minPlayers <= players && game.maxPlayers >= players;
+          return categoryMatch && playersMatch;
+        })
+      } else {
+        games = games.filter(game => {
+          const playersMatch = game.minPlayers <= players && game.maxPlayers >= players;
+          return playersMatch;
         })
       }
       
@@ -101,6 +110,12 @@ function App() {
       }
     })
   }, [setState])
+
+  const handleRangeChange = (event) => {
+    const newNumberPlayers = parseInt(event.target.value);
+    setNumberPlayers(newNumberPlayers);
+    handleFilterChange(event, newNumberPlayers);
+  };
 
   return (
   <div>  
@@ -119,8 +134,11 @@ function App() {
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Filters</a>
             <GameFilters categories={CATEGORIES} onFilterChange={handleFilterChange} />
           </li>
+          <li className="nav-item">
+            <input type="range" className="form-range" min="1" max="10" step="1" id="rangeInput" value={numberPlayers} onChange={handleRangeChange} />
+            <p className="navbar-text">Players: {numberPlayers}</p>
+          </li>
         </ul>
-        <button class="btn btn-primary" type="button">Search</button>
       </div>
     </div>
   </nav>
@@ -130,7 +148,7 @@ function App() {
     <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
       <source src="media/CardOverlay.mov" type="video/mp4" />
     </video>
-  
+
     <div className="container h-100 text-center align-items-center align-middle justify-content-center">
       <div className="d-flex h-100 text-center align-items-center align-middle justify-content-center">
         <div className="w-100 text-white">
@@ -143,6 +161,7 @@ function App() {
 
   <div className="container">
     <div className="row row-cols-1 gy-5">
+      
       <GamesList games={state.games} />
 
       {/*
