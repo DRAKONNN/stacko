@@ -122,19 +122,19 @@ function App() {
   <nav className="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
     <div className="container-fluid">
       <a className="navbar-brand" href="#">STACK'O</a>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="collapsibleNavbar">
+      <div className="navbar-collapse collapse" id="navbarToggleExternalContent">
         <ul className="navbar-nav">
           <li className="nav-item">
             <a className="nav-link disabled" href="#">Link</a>
           </li>
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Filters</a>
+            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categories</a>
             <GameFilters categories={CATEGORIES} onFilterChange={handleFilterChange} />
           </li>
-          <li className="nav-item">
+          <li className="nav-item custom-range">
             <input type="range" className="form-range" min="1" max="10" step="1" id="rangeInput" value={numberPlayers} onChange={handleRangeChange} />
             <p className="navbar-text">Players: {numberPlayers}</p>
           </li>

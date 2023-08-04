@@ -33,6 +33,30 @@
       background-color: #b8b8ff;
   }
 
+  .custom-range {
+    max-width: 30vh;
+  }
+  .custom-range p {
+    padding-top: 0px;
+  }
+
+  @media (min-width: 768px) {
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .nav-item {
+      margin-left: 5vh;
+      
+    }
+    .custom-range {
+      padding: 0vh !important;
+      margin-bottom: 0px !important;
+    }
+  }
   
   /*
   * Header
