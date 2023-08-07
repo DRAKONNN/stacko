@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
-import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import games from './datagames';
 import rules from './datarules';
 import React, {useCallback, useState, useEffect } from "react";
@@ -84,22 +84,24 @@ function App() {
     setState(previousState => {
       let filters = new Set(previousState.filters)
       let games = GAMES
-      
+
       if (event.target.checked) {
         filters.add(event.target.value)
       } else {
         filters.delete(event.target.value)
       }
       
+      var valueInput = document.getElementById("rangeInput").value;
       if (filters.size) {
         games = games.filter(game => {
           const categoryMatch = filters.has(game.category);
-          const playersMatch = game.minPlayers <= players && game.maxPlayers >= players;
-          return categoryMatch && playersMatch;
+          if (game.minPlayers <= valueInput && game.maxPlayers >= valueInput) {
+            return categoryMatch;
+          }
         })
       } else {
         games = games.filter(game => {
-          const playersMatch = game.minPlayers <= players && game.maxPlayers >= players;
+          const playersMatch = game.minPlayers <= valueInput && game.maxPlayers >= valueInput;
           return playersMatch;
         })
       }
@@ -118,8 +120,8 @@ function App() {
   };
 
   return (
-  <div>  
-  <nav className="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+  <div>
+  <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
     <div className="container-fluid">
       <a className="navbar-brand" href="#">STACK'O</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,7 +144,7 @@ function App() {
       </div>
     </div>
   </nav>
-    
+  
   <header>
     {/* <div className="overlay"></div> */} 
     <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
