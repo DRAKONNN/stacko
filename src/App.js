@@ -80,7 +80,7 @@ function App() {
 
   const [numberPlayers, setNumberPlayers] = useState(5);
   
-  const handleFilterChange = useCallback((event, players) => {
+  const handleFilterChange = useCallback((event) => {
     setState(previousState => {
       let filters = new Set(previousState.filters)
       let games = GAMES
@@ -116,7 +116,7 @@ function App() {
   const handleRangeChange = (event) => {
     const newNumberPlayers = parseInt(event.target.value);
     setNumberPlayers(newNumberPlayers);
-    handleFilterChange(event, newNumberPlayers);
+    handleFilterChange(event);
   };
 
   return (
