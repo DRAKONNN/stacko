@@ -13,11 +13,18 @@ const CATEGORIES = [
   "Party", 
   "Frenetic", 
   "Strategy",
-]
+];
 
 const GAMES = games;
 
-function GameFilters(props) {
+const DURATIONS = [
+  { label: 'Undefined', value: '0' },
+  { label: 'Fast', value: '7' },
+  { label: 'Medium', value: '12' },
+  { label: 'Slow', value: '17' },
+]
+
+function RenderCategories(props) {
   const { 
     categories,
     onFilterChange,
@@ -29,6 +36,26 @@ function GameFilters(props) {
           <li key={category}>
             <label>
               <input onChange={onFilterChange} type="checkbox" value={category} /> {category}
+            </label>
+          </li>
+        ))}
+      </ul>
+  )
+}
+
+function RenderDurations(props) {
+  const { 
+    durations,
+    selectedDuration,
+    onDurationChange,
+  } = props
+  
+  return (
+      <ul className="dropdown-menu checkbox-menu allow-focus">
+        {durations.map(duration => (
+          <li key={duration.value} className={`list-group-item ${selectedDuration === duration.value ? 'active' : ''}`}>
+            <label>
+              <input type="radio" className="form-check-input" value={duration.value} checked={selectedDuration === duration.value} onChange={onDurationChange} /> {duration.label}
             </label>
           </li>
         ))}
@@ -79,6 +106,8 @@ function App() {
   })
 
   const [numberPlayers, setNumberPlayers] = useState(5);
+
+  const [selectedDuration, setSelectedDuration] = useState('');
   
   const handleFilterChange = useCallback((event) => {
     setState(previousState => {
@@ -119,6 +148,10 @@ function App() {
     handleFilterChange(event);
   };
 
+  const handleRadioChange = event => {
+    setSelectedDuration(event.target.value);
+  };
+
   return (
   <div>
   <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
@@ -134,11 +167,15 @@ function App() {
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categories</a>
-            <GameFilters categories={CATEGORIES} onFilterChange={handleFilterChange} />
+            <RenderCategories categories={CATEGORIES} onFilterChange={handleFilterChange} />
           </li>
           <li className="nav-item custom-range">
             <input type="range" className="form-range" min="1" max="10" step="1" id="rangeInput" value={numberPlayers} onChange={handleRangeChange} />
             <p className="navbar-text">Players: {numberPlayers}</p>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Durations</a>
+            <RenderDurations durations={DURATIONS} selectedDuration={selectedDuration} onDurationChange={handleRadioChange} />
           </li>
         </ul>
       </div>
