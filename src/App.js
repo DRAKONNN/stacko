@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import games from './datagames';
 import rules from './datarules';
-import React, {useCallback, useState, useEffect } from "react";
+import React, {useCallback, useState} from "react";
 //import { Button } from 'react-bootstrap';
 
 const CATEGORIES = [
@@ -43,7 +43,7 @@ function RenderCategories(props) {
   )
 }
 
-function RenderDurations(props) {
+/*function RenderDurations(props) {
   const { 
     durations,
     selectedDuration,
@@ -61,7 +61,7 @@ function RenderDurations(props) {
         ))}
       </ul>
   )
-}
+}*/
 
 function Game(props) {
   const { game } = props
@@ -107,7 +107,7 @@ function App() {
 
   const [numberPlayers, setNumberPlayers] = useState(5);
 
-  const [selectedDuration, setSelectedDuration] = useState('');
+  const [selectedDuration, setSelectedDuration] = useState(12);
   
   const handleFilterChange = useCallback((event) => {
     setState(previousState => {
@@ -119,19 +119,24 @@ function App() {
       } else {
         filters.delete(event.target.value)
       }
-      
-      var valueInput = document.getElementById("rangeInput").value;
+      console.log(selectedDuration);
+      var valueInputPlayers = document.getElementById("rangeInputPlayers").value;
+      var valueInputDuration = document.getElementById("rangeInputDuration").value;
       if (filters.size) {
         games = games.filter(game => {
           const categoryMatch = filters.has(game.category);
-          if (game.minPlayers <= valueInput && game.maxPlayers >= valueInput) {
-            return categoryMatch;
+          if (game.minPlayers <= valueInputPlayers && game.maxPlayers >= valueInputPlayers) {
+            if (game.minTime <= valueInputDuration && game.maxTime >= valueInputDuration) {
+              return categoryMatch;
+            }
           }
         })
       } else {
         games = games.filter(game => {
-          const playersMatch = game.minPlayers <= valueInput && game.maxPlayers >= valueInput;
-          return playersMatch;
+          const playersMatch = game.minPlayers <= valueInputPlayers && game.maxPlayers >= valueInputPlayers;
+          if (game.minTime <= valueInputDuration && game.maxTime >= valueInputDuration) {
+            return playersMatch;
+          }
         })
       }
       
@@ -142,15 +147,22 @@ function App() {
     })
   }, [setState])
 
-  const handleRangeChange = (event) => {
+  const handlePlayersChange = (event) => {
     const newNumberPlayers = parseInt(event.target.value);
     setNumberPlayers(newNumberPlayers);
     handleFilterChange(event);
   };
-
-  const handleRadioChange = event => {
-    setSelectedDuration(event.target.value);
+  const handleDurationChange = (event) => {
+    const newSelectedDuration = parseInt(event.target.value);
+    setSelectedDuration(newSelectedDuration);
+    handleFilterChange(event);
   };
+
+  /*const handleRadioChange = event => {
+    setSelectedDuration(event.target.value);
+    console.log(selectedDuration);
+    handleFilterChange(event);
+  };*/
 
   return (
   <div>
@@ -170,13 +182,17 @@ function App() {
             <RenderCategories categories={CATEGORIES} onFilterChange={handleFilterChange} />
           </li>
           <li className="nav-item custom-range">
-            <input type="range" className="form-range" min="1" max="10" step="1" id="rangeInput" value={numberPlayers} onChange={handleRangeChange} />
+            <input type="range" className="form-range" min="1" max="10" step="1" id="rangeInputPlayers" value={numberPlayers} onChange={handlePlayersChange} />
             <p className="navbar-text">Players: {numberPlayers}</p>
           </li>
-          <li className="nav-item dropdown">
+          <li className="nav-item custom-range">
+            <input type="range" className="form-range" min="5" max="20" step="1" id="rangeInputDuration" value={selectedDuration} onChange={handleDurationChange} />
+            <p className="navbar-text">Minutes: {selectedDuration}</p>
+          </li>
+          {/*<li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Durations</a>
             <RenderDurations durations={DURATIONS} selectedDuration={selectedDuration} onDurationChange={handleRadioChange} />
-          </li>
+          </li>*/}
         </ul>
       </div>
     </div>
