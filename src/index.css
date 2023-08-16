@@ -125,6 +125,11 @@
   /*
   * Games elements
   */
+
+  .bg-rojo {
+    background-color: red;
+  }
+
   .container {
     margin-top: 5vh;
   }

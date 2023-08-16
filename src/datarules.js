@@ -38,4 +38,21 @@ export default [{
   'If the cards were truthfully played, the challenging player must pick up the central pile.<br>' +
   "The player who won the challenge starts the next round by placing any rank of cards he wish, continuing the game.",
   endgame: 'The game continues with rounds of bluffing, challenging, and card play until one player successfully gets rid of all their cards.<br>',
+}, {
+  id: 'chinchon04', 
+  name: 'Chinchón',
+  deal: 'Seven cards are dealt to each player if there are 3 or 4 players, or five cards if there are more players.<br>' +
+  'A card is placed face-up on the discard pile.<br>' +
+  'When a player accumulates all four suits of the same rank, those cards are removed to the discard pile.<br>',
+  gameRound: 'The main goal is to form valid combinations of cards in your hand, such as sets or runs, and ultimately be the first to get rid of all your cards.<br>' +
+  "Valid combinations:<br>" +
+  "- Set: Three cards of the same rank (e.g., three Jacks).<br>" +
+  '- Run: Three or more consecutive cards of the same suit (e.g., 5, 6, 7 of hearts).<br>' +
+  '- Chinchón: A seven-card run of the same suit.<br>' +
+  'During their turn, a player must:<br>' +
+  '1. Draw a card from the discard pile or the deck.<br>' +
+  '2. Optionally, lay down valid combinations of cards on the table.<br>' +
+  "At the end of their turn, a player must discard a card onto the discard pile.",
+  endgame: 'Number cards are worth their face value, and face cards (Jacks, Queens, and Kings) are worth 10 points each.<br>' +
+  'The goal is to accumulate the fewest points in your unplayed hand.<br>',
 }];

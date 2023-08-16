@@ -105,7 +105,7 @@ function App() {
     filters: new Set(),
   })
 
-  const [numberPlayers, setNumberPlayers] = useState(5);
+  const [numberPlayers, setNumberPlayers] = useState(4);
 
   const [selectedDuration, setSelectedDuration] = useState(12);
   
