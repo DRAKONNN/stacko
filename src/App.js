@@ -17,12 +17,6 @@ const CATEGORIES = [
 
 const GAMES = games;
 
-const DURATIONS = [
-  { label: 'Undefined', value: '0' },
-  { label: 'Fast', value: '7' },
-  { label: 'Medium', value: '12' },
-  { label: 'Slow', value: '17' },
-]
 
 function RenderCategories(props) {
   const { 
@@ -169,11 +163,11 @@ function App() {
   <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
     <div className="container-fluid">
       <a className="navbar-brand" href="#">STACK'O</a>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="navbar-collapse collapse" id="navbarToggleExternalContent">
-        <ul className="navbar-nav">
+      <div className="collapse navbar-collapse" id="collapseNavbar">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
             <a className="nav-link disabled" href="#">Link</a>
           </li>
@@ -189,10 +183,6 @@ function App() {
             <input type="range" className="form-range" min="5" max="20" step="1" id="rangeInputDuration" value={selectedDuration} onChange={handleDurationChange} />
             <p className="navbar-text">Minutes: {selectedDuration}</p>
           </li>
-          {/*<li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Durations</a>
-            <RenderDurations durations={DURATIONS} selectedDuration={selectedDuration} onDurationChange={handleRadioChange} />
-          </li>*/}
         </ul>
       </div>
     </div>
