@@ -62,4 +62,20 @@ export default [{
   classAttTime: 'bg-light text-primary',
   classAttButton: 'btn-light text-primary',
   classAttImage: 'bg-light',
+}, {
+  id: 'higherlower05', 
+  name: 'Higher Lower',
+  surname: '"Hi-Lo" or Guess the Card',
+  description: 'Predict if the next card drawn will have a higher or lower',
+  imageUrl: 'images/HigherLowerAI.png',
+  minPlayers: 2,
+  maxPlayers: 10,
+  minTime: 1,
+  maxTime: 15,
+  category: 'Frenetic',
+  classAttBackground: 'bg-success bg-gradient',
+  classAttPlayers: 'bg-rojo',
+  classAttTime: 'bg-rojo',
+  classAttButton: 'btn-danger text-white',
+  classAttImage: 'bg-danger'
 }];

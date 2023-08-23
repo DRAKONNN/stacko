@@ -55,4 +55,20 @@ export default [{
   "At the end of their turn, a player must discard a card onto the discard pile.",
   endgame: 'Number cards are worth their face value, and face cards (Jacks, Queens, and Kings) are worth 10 points each.<br>' +
   'The goal is to accumulate the fewest points in your unplayed hand.<br>',
+}, {
+  id: 'higherlower05', 
+  name: 'Higher Lower',
+  deal: 'Start by shuffling a standard 52-card deck thoroughly.<br>' +
+  'Place the shuffled deck face-down, forming the drawing pile.<br>' +
+  'Reveal the top card of the drawing pile. This card serves as the starting point for the round.<br>',
+  gameRound: "The player's task is to predict if the next card drawn will have a higher or lower value than the revealed card.<br>" +
+  'Make your choice and announce whether you believe the next card will be "higher" or "lower".<br>' +
+  "Draw the next card from the drawing pile and reveal it. If your prediction is correct:<br>" +
+  "1. You continue to the next round with the current card as the starting point.<br>" +
+  "2. You may decide to keep your winnings and end the game or continue to the next round, potentially increasing your rewards.<br>" +
+  "If your prediction is incorrect:<br>" +
+  "1. The round ends and you lose any winnings accumulated during that session.<br>" +
+  "2. The game is over, and you can choose to start a new session if you wish.<br>",
+  endgame: 'The game concludes when you decide to stop and collect your current winnings.<br>' +
+  'You can also choose to continue for as long as you like, aiming to accumulate higher rewards. However, be cautious, as an incorrect prediction results in losing all winnings from that session.<br>',
 }];
